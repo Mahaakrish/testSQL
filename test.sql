@@ -43,11 +43,7 @@ insert into ticket value(4,3,'D11',3);
 insert into ticket value(5,2,'A11',4);
 insert into ticket value(6,4,'E24',2);
 
-//copy
-insert into ticket value(1,1,'A12',1);
-insert into ticket value(2,2,'A11',1);
-insert into ticket value(3,1,'B31',3);
-insert into ticket value(4,3,'D11',3);
-insert into ticket value(5,2,'A11',4);
-insert into ticket value(6,4,'E24',2);
-//////checking conflict
+select t.tID as TicketID, c.name as Passenger, c.passportNo as Passport, f.name as Flight, t.seatNo as Seat,
+tr.travel_from as Boarding_point, tr.travel_to as Destination, tr.travel_date as Boarding_time,
+tr.price as Ticket_price from ticket t, trip tr, flight f,customer c 
+where t.custID=c.custID and t.trID=tr.trID and tr.flID=f.flID;
